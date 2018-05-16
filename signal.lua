@@ -28,6 +28,16 @@ function signal:connect(handler)
 end
 
 
+function signal:connect2(taskexecutor, handler)
+  if not handler then return nil end
+  if self._populator then self._populator(handler) end
+
+  self._handlers:add(function() taskexecutor:addtask(handler) end)
+
+  return connection.new(function() self._handlers:remove(handler) end)
+end
+
+
 function signal:disconnect(handler)
   self._handlers:remove(handler)
 end

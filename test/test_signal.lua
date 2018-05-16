@@ -3,6 +3,7 @@ package.path = package.path..';../?.lua'
 
 local test = require 'test'
 local signal = require 'signal'
+local taskexecutor = require 'taskexecutor'
 
 
 test.new('signal', 'new', function(self)
@@ -26,6 +27,21 @@ test.new('signal', 'connect', function(self)
   local s = signal.new()
   self.assert(not s:connect(), 'connection returned')
   self.assert(s:connect(function() end), 'no connection returned')
+end)
+
+
+test.new('signal', 'connect2', function(self)
+  local executor = taskexecutor.new()
+  local s = signal.new()
+  local result
+  local expected = 42
+
+  s:connect2(executor, function() result = expected end)
+  self.assert(not result)
+
+  s:emit()
+  executor:execute()
+  self.eq(result, expected)
 end)
 
 
