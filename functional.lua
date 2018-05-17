@@ -45,6 +45,24 @@ function fun.reduce2(t, val, func)
 end
 
 
+function fun.eq(l, r)
+  if fun.count(l) ~= fun.count(r) then return false end
+
+  for i, v in pairs(l) do
+    if v ~= r[i] then return false end
+  end
+
+  return true
+end
+
+
+function fun.slice(t, b, e, step)
+  local result = { }
+  for i = b, e, step or 1 do table.insert(result, t[i]) end
+  return result
+end
+
+
 function fun.find(t, val)
   for i, v in pairs(t) do
     if v == val then return i end

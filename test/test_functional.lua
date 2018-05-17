@@ -57,6 +57,21 @@ test.new('functional', 'reduce2', function(self)
 end)
 
 
+test.new('functional', 'eq', function(self)
+  self.assert(fun.eq({ }, { }))
+  self.assert(fun.eq({ 1, 2, 3 }, { 1, 2, 3 }))
+  self.assert(not fun.eq({ 1, 2, 3 }, { 1, 2 }))
+  self.assert(not fun.eq({ 1, 2, 3 }, { 4, 5, 6 }))
+end)
+
+
+test.new('functional', 'slice', function(self)
+  self.assert(not fun.eq(fun.slice({ 1, 2, 3 }, 2, 3), { 1, 3 }))
+  self.assert(fun.eq(fun.slice({ 1, 2, 3 }, 2, 3), { 2, 3 }))
+  self.assert(fun.eq(fun.slice({ 1, 2, 3, 4, 5 }, 1, 5, 2), { 1, 3, 5 }))
+end)
+
+
 test.new('functional', 'find', function(self)
   local t = { 1, 2, 4 }
 
