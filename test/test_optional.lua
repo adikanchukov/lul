@@ -10,7 +10,7 @@ test.new('optional', 'new', function(self)
 
 
   self.assert(not op:getvalueor())
-  self.assert(not op:initialized(), 'initialized by default')
+  self.assert(not op:initialized())
 end)
 
 
@@ -45,7 +45,7 @@ test.new('optional' ,'reset', function(self)
   op:reset()
 
   self.eq(op:getvalueor(expected), expected)
-  self.assert(not op:initialized(), 'initialized after reset')
+  self.assert(not op:initialized())
 end)
 
 
@@ -55,7 +55,7 @@ test.new('optional', 'set', function(self)
 
   op:set(expected)
 
-  self.assert(op:initialized(), 'not initialized after set')
+  self.assert(op:initialized())
   self.eq(op:get(), expected)
 end)
 

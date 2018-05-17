@@ -8,7 +8,7 @@ local taskexecutor = require 'taskexecutor'
 
 test.new('signal', 'new', function(self)
   local s = signal.new()
-  self.assert(not s:locked(), 'locked by default')
+  self.assert(not s:locked())
 end)
 
 
@@ -25,8 +25,8 @@ end)
 
 test.new('signal', 'connect', function(self)
   local s = signal.new()
-  self.assert(not s:connect(), 'connection returned')
-  self.assert(s:connect(function() end), 'no connection returned')
+  self.assert(not s:connect())
+  self.assert(s:connect(function() end))
 end)
 
 
@@ -79,9 +79,9 @@ test.new('signal', 'lockunlock', function(self)
   s:connect(function(val) result = val end)
   s:lock()
 
-  self.assert(s:locked(), 'not locked')
+  self.assert(s:locked())
   s:emit(expected)
-  self.assert(not result, 'lock doesn\'t work')
+  self.assert(not result)
 
   s:unlock()
   s:emit(expected)
@@ -98,7 +98,7 @@ test.new('signal', 'disconnect', function(self)
   s:disconnect(handler)
   s:emit()
 
-  self.assert(not result, 'signal emitted')
+  self.assert(not result)
 end)
 
 
