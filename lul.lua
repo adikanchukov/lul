@@ -23,6 +23,8 @@ lul.taskexecutor = require 'taskexecutor'
 lul.observable = require 'observable'
 lul.transaction = require 'transaction'
 
+lul.timespan = require 'timespan'
+
 function lulversion() return lul.version.new(1, 0, 0) end
 
 
