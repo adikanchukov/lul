@@ -35,6 +35,21 @@ function observable:onchanged()
 end
 
 
+function observable:lock()
+  self._changed:lock()
+end
+
+
+function observable:unlock()
+  self._changed:unlock()
+end
+
+
+function observable:locked()
+  self._changed:locked()
+end
+
+
 function observable:__tostring()
   return self._value
 end
