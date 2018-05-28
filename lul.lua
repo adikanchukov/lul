@@ -24,6 +24,7 @@ lul.observable = require 'observable'
 lul.transaction = require 'transaction'
 
 lul.timespan = require 'timespan'
+lul.cli = require 'cli'
 
 function lulversion() return lul.version.new(1, 0, 0) end
 
